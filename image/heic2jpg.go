@@ -20,7 +20,7 @@ func TransferMultiply(dirPath string, originalName string, outNamePrefix string,
 	index := 1
 	for _, name := range fileNames {
 		originalFileName := filepath.Base(name)
-		if strings.HasPrefix(originalFileName, originalName) {
+		if strings.HasPrefix(originalFileName, originalName) && IsImage(originalFileName) {
 			curFilePath := filepath.Join(dirPath, originalFileName)
 			outName := fmt.Sprintf("%s%d", outNamePrefix, index)
 			index += 1

@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"os"
 	"path/filepath"
+	"strings"
 )
 
 func CheckPathIsDir(path string) (bool, error) {
@@ -39,4 +40,14 @@ func ListFiles(dirPath string) ([]string, error) {
 	}
 
 	return files, nil
+}
+
+func IsImage(fileName string) bool {
+	imageSuffix := []string{"png", "jpg", "heic"}
+	for _, suffix := range imageSuffix {
+		if strings.HasSuffix(fileName, suffix) {
+			return true
+		}
+	}
+	return false
 }
