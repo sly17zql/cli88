@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # 下载并解压缩可执行文件
-wget https://github.com/sly17zql/low/releases/download/v0.0.1/cli88.tar.gz
+wget https://github.com/sly17zql/cli88/releases/download/v0.0.1/cli88.tar.gz
 
 if [ $? -ne 0 ]; then
   echo "Download failed. Exiting."
