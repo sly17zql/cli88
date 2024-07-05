@@ -1,4 +1,4 @@
-package image
+package convert
 
 import (
 	"fmt"
@@ -42,12 +42,11 @@ func ListFiles(dirPath string) ([]string, error) {
 	return files, nil
 }
 
-func IsImage(fileName string) bool {
-	imageSuffix := []string{"png", "jpg", "heic"}
-	for _, suffix := range imageSuffix {
-		if strings.HasSuffix(fileName, suffix) {
-			return true
-		}
+func IsExceptType(fileName string, suffix string) bool {
+	parts := strings.Split(fileName, ".")
+	lastPart := parts[len(parts)-1]
+	if strings.ToLower(lastPart) == suffix {
+		return true
 	}
 	return false
 }

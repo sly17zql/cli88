@@ -1,4 +1,4 @@
-package image
+package convert
 
 import (
 	"fmt"
@@ -20,7 +20,7 @@ func TransferMultiply(dirPath string, originalName string, outNamePrefix string,
 	index := 1
 	for _, name := range fileNames {
 		originalFileName := filepath.Base(name)
-		if strings.HasPrefix(originalFileName, originalName) && IsImage(originalFileName) {
+		if strings.HasPrefix(originalFileName, originalName) && IsExceptType(originalFileName, "heic") {
 			curFilePath := filepath.Join(dirPath, originalFileName)
 			outName := fmt.Sprintf("%s%d", outNamePrefix, index)
 			index += 1
@@ -56,7 +56,7 @@ func transferSimple(filePath string, outName string, format string) error {
 	}
 
 	if err != nil {
-		return fmt.Errorf("failed to convert image: %v", err)
+		return fmt.Errorf("failed to convert convert: %v", err)
 	}
 
 	newFileName := fmt.Sprintf("%s.%s", outName, format)
